@@ -1,0 +1,11 @@
+Model Information:
+* title:	ChipBoy
+* source:	https://sketchfab.com/3d-models/chipboy-f51dd390165c471fb84078b42ccd35ad
+* author:	James Horn (https://sketchfab.com/jameshorn)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "ChipBoy" (https://sketchfab.com/3d-models/chipboy-f51dd390165c471fb84078b42ccd35ad) by James Horn (https://sketchfab.com/jameshorn) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
