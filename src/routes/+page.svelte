@@ -2,6 +2,7 @@
 	import { browser } from '$app/environment';
 	import * as THREE from 'three';
 	import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+	import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 	import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 	type OnLoadXHR = {
@@ -25,11 +26,8 @@
 		let renderer: THREE.WebGLRenderer;
 		let ambientLight: THREE.AmbientLight;
 		let directionalLight: THREE.DirectionalLight;
-		// let spotLight: THREE.SpotLight;
-		// let pointLight: THREE.PointLight;
 		let controls: THREE.OrbitControls;
 		let model: any;
-		// let cube: THREE.Mesh<THREE.BoxGeometry, THREE.MeshBasicMaterial>;
 
 		const init = () => {
 			scene = new THREE.Scene();
@@ -38,18 +36,7 @@
 			renderer = new THREE.WebGLRenderer({ antialias: true });
 			renderer.setSize(window.innerWidth, window.innerHeight);
 			renderer.setPixelRatio(window.devicePixelRatio);
-			renderer.toneMapping = THREE.ACESFilmicToneMapping;
-			renderer.outputEncoding = THREE.sRGBEncoding;
-			renderer.gammaOutput = true;
-			renderer.shadowMap.enabled = true;
-			renderer.useLegacyLights = false;
 			document.body.appendChild(renderer.domElement);
-
-			// pointLight = new THREE.PointLight(0x00ff00, 1, 100, 0);
-			// pointLight.position.set(1, 0, 0);
-
-			// // const plHelper = new THREE.PointLightHelper(pointLight, 1);
-			// scene.add(pointLight);
 
 			// ambient light which is for the whole scene
 			ambientLight = new THREE.AmbientLight(0xfff2cc, 0.3);
@@ -63,30 +50,22 @@
 			const dlHelper = new THREE.DirectionalLightHelper(directionalLight, 3);
 			scene.add(directionalLight, dlHelper);
 
-			// spotLight = new THREE.SpotLight(0x00ff00, 10000, 8, Math.PI / 4, 0.5, 0);
-			// spotLight.castShadow = true;
-			// spotLight.position.set(1, 1, 0);
-			// const slHelper = new THREE.SpotLightHelper(spotLight, 3);
-			// scene.add(spotLight, slHelper);
-
-			// let spotLightTarget = new THREE.Object3D();
-			// spotLightTarget.position.set(1, -1, 0);
-			// scene.add(spotLightTarget);
-			// spotLight.target = spotLightTarget;
-
 			controls = new OrbitControls(camera, renderer.domElement);
 
 			//controls.update() must be called after any manual changes to the camera's transform
 			controls.update();
 
 			const loader = new GLTFLoader();
+			const dracoLoader = new DRACOLoader();
+			dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+			dracoLoader.setDecoderConfig({ type: 'js' });
+			loader.setDRACOLoader(dracoLoader);
+
 			loader.load(
-				'./assets/chipboy/ChipBoy_SF.gltf',
+				'./assets/chipboy/ChipBoy_SF.glb',
 				function (gltf: InitGLTFJSON) {
 					console.log(gltf);
 					model = gltf.scene;
-					model.castShadow = true;
-					model.recieveShadow = true;
 					scene.add(model);
 				},
 				(xhr: OnLoadXHR) => {
@@ -96,11 +75,6 @@
 					console.log(error);
 				}
 			);
-
-			// const geometry = new THREE.BoxGeometry(1, 1, 1);
-			// const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
-			// cube = new THREE.Mesh(geometry, material);
-			// scene.add(cube);
 
 			camera.position.z = 5;
 		};
