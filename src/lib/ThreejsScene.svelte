@@ -41,12 +41,17 @@
 				// 	return;
 				// }
 
+				// let width = window.innerWidth;
+				// let height = window.innerHeight;
+				let width = window.innerWidth;
+				let height = 500;
+
 				// let width = ttscene.clientWidth;
 				// let height = ttscene.clientHeight;
 				// console.log(width);
 				// console.log(document.body.childNodes[1].childNodes[1]);
 
-				camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+				camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 				// camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 
 				// renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.querySelector('#tjc') });
@@ -54,7 +59,7 @@
 				renderer = new THREE.WebGLRenderer({ antialias: true });
 				// renderer.setSize(ttscene.clientWidth, ttscene?.clientHeight, false);
 				// renderer.setPixelRatio(window.devicePixelRatio);
-				renderer.setSize(window.innerWidth, window.innerHeight);
+				renderer.setSize(width, height);
 				renderer.setPixelRatio(window.devicePixelRatio);
 				// document.querySelector('#three-js-container')[0].appendChild(document.createElement('p'));
 				// document.getElementById('three-js-container').appendChild(renderer.domElement);
