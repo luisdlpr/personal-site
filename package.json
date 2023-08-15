@@ -32,6 +32,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"svelte-resize-observer-action": "^0.0.3",
 		"three": "^0.155.0"
 	}
 }

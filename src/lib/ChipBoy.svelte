@@ -2,6 +2,7 @@
 	// set up three js scene
 	import { TScene } from '$lib/ThreejsScene';
 	import { onMount } from 'svelte';
+	import { resize } from 'svelte-resize-observer-action';
 
 	let container: HTMLDivElement;
 
@@ -15,8 +16,11 @@
 		return chipBoyScene;
 	}
 
+	let chipBoyScene: TScene;
+	let debounceTimer: ReturnType<typeof setTimeout>;
+
 	onMount(() => {
-		let chipBoyScene = loadChipBoy();
+		chipBoyScene = loadChipBoy();
 		animate();
 
 		function animate() {
@@ -24,9 +28,19 @@
 			chipBoyScene.animate();
 		}
 	});
+
+	function onResize(entry: ResizeObserverEntry) {
+		let width = entry.contentRect.width;
+		let height = entry.contentRect.height;
+		if (chipBoyScene) {
+			clearTimeout(debounceTimer);
+			debounceTimer = setTimeout(() => {
+				chipBoyScene.updateResize(width, height);
+			}, 100);
+		}
+	}
 </script>
 
-<div>
-	<div bind:this={container} style="width:100vw; height:500px;" />
-	<div>hello</div>
+<div style="display: flex; height: 500px; align-items: center; justify-content: center;">
+	<div use:resize={onResize} bind:this={container} style="height: 100%; width: 100%" />
 </div>

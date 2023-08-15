@@ -130,4 +130,10 @@ export class TScene {
 		this.controls.update();
 		this.render();
 	}
+
+	updateResize(width: number, height: number) {
+		this.renderer.setSize(width, height);
+		this.camera.aspect = width / height;
+		this.camera.updateProjectionMatrix();
+	}
 }
