@@ -6,12 +6,8 @@
 	<title>SvelteKit + ThreeJS</title>
 </svelte:head>
 
-<ThreejsScene />
+<body>
+	<ThreejsScene --height="500px" />
 
-<section>Hello World.</section>
-
-<style>
-	* {
-		margin: 10px;
-	}
-</style>
+	<section>Hello World.</section>
+</body>

@@ -96,7 +96,7 @@ export class TScene {
 		loader.setDRACOLoader(dracoLoader);
 	}
 
-	loadGLTF(debug: Boolean, path: String) {
+	loadGLTF(debug: Boolean, path: String, yOffset: number) {
 		// initialise loader and set decompressor
 		this.loader = new GLTFLoader();
 		this.setDRACOLoader(this.loader);
@@ -109,6 +109,7 @@ export class TScene {
 			path,
 			function (gltf: InitGLTFJSON) {
 				let model = gltf.scene;
+				model.position.set(0, yOffset, 0);
 				scene.add(model);
 			},
 			(xhr: OnLoadXHR) => {
@@ -118,6 +119,12 @@ export class TScene {
 				debug && console.log(error);
 			}
 		);
+	}
+
+	addBackgroundImage(path: string) {
+		const backgroundTexture = new THREE.TextureLoader().load(path);
+		this.scene.background = backgroundTexture;
+		this.scene.backgroundIntensity = 0.1;
 	}
 
 	render() {
