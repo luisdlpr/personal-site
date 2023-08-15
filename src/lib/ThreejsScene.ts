@@ -1,18 +1,14 @@
-// three js scene
-import { browser } from '$app/environment';
 import * as THREE from 'three';
+
+// no types avaliable for these addons
+// @ts-ignore
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// @ts-ignore
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+// @ts-ignore
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-class Tscene {
-	constructor(id: any) {
-		console.log(id);
-	}
-}
-
-export default Tscene;
-
+// custom types
 type OnLoadXHR = {
 	[key: string]: any;
 	loaded: any;
@@ -28,106 +24,110 @@ type InitGLTFJSON = {
 	scenes: any;
 };
 
-if (browser) {
-	let camera: THREE.PerspectiveCamera;
-	let scene: THREE.Scene;
-	let renderer: THREE.WebGLRenderer;
-	let ambientLight: THREE.AmbientLight;
-	let directionalLight: THREE.DirectionalLight;
-	let controls: THREE.OrbitControls;
-	let model: any;
+export class TScene {
+	camera: THREE.PerspectiveCamera;
+	controls: any; //THREE.OrbitControls;
+	container: HTMLElement;
+	loader: any; // THREE.GLTFLoader
+	renderer: THREE.WebGLRenderer;
+	scene: THREE.Scene;
 
-	const init = () => {
-		scene = new THREE.Scene();
+	constructor(container: HTMLElement, orbitControls: Boolean) {
+		// get width and height from container
+		const width = container.clientWidth;
+		const height = container.clientHeight;
 
-		// let ttscene = document.querySelector('#tjc');
+		// initialise scene and camera
+		this.scene = new THREE.Scene();
+		this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 
-		// if (ttscene == null) {
-		// 	return;
-		// }
+		// initialise renderer
+		this.renderer = new THREE.WebGLRenderer({ antialias: true });
+		this.renderer.setSize(width, height);
+		this.renderer.setPixelRatio(window.devicePixelRatio);
 
-		// let width = ttscene.clientWidth;
-		// let height = ttscene.clientHeight;
-		// console.log(width);
-		// console.log(document.body.childNodes[1].childNodes[1]);
+		// add renderer to given container
+		this.container = container;
+		this.container.appendChild(this.renderer.domElement);
 
-		camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-		// camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+		// initialise controls
+		if (orbitControls) {
+			this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+			this.controls.update();
+		}
+	}
 
-		// renderer = new THREE.WebGLRenderer({ antialias: true, canvas: document.querySelector('#tjc') });
-		renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#tjc') });
-		// renderer = new THREE.WebGLRenderer({ antialias: true });
-		// renderer.setSize(ttscene.clientWidth, ttscene?.clientHeight, false);
-		// renderer.setPixelRatio(window.devicePixelRatio);
-		renderer.setSize(window.innerWidth, window.innerHeight);
-		renderer.setPixelRatio(window.devicePixelRatio);
-		// document.querySelector('#three-js-container')[0].appendChild(document.createElement('p'));
-		// document.getElementById('three-js-container').appendChild(renderer.domElement);
-		// document.body.replaceChild(renderer.domElement, document.body.childNodes[1].childNodes[1]);
-		// camera.aspect = width / height;
-		// camera.updateProjectionMatrix();
-
-		// ambient light which is for the whole scene
-		ambientLight = new THREE.AmbientLight(0xfff2cc, 0.3);
+	addAmbientLight(hexColor: number, intensity: number) {
+		let ambientLight = new THREE.AmbientLight(hexColor, intensity);
 		ambientLight.castShadow = true;
-		scene.add(ambientLight);
+		this.scene.add(ambientLight);
+		return ambientLight;
+	}
 
-		directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+	addDirectionalLight(
+		hexColor: number,
+		intensity: number,
+		position: { x: number; y: number; z: number }
+	) {
+		// add a directional light
+		let directionalLight = new THREE.DirectionalLight(hexColor, intensity);
 		directionalLight.castShadow = true;
-		directionalLight.position.set(3, 3, 0);
+		directionalLight.position.set(position.x, position.y, position.z);
+		this.scene.add(directionalLight);
+		return directionalLight;
+	}
 
-		scene.add(new THREE.GridHelper(10, 10));
+	addHelpers(directionalLight: THREE.DirectionalLight) {
+		// add a helper for the directional light
+		if (directionalLight) {
+			const dlHelper = new THREE.DirectionalLightHelper(directionalLight, 3);
+			this.scene.add(dlHelper);
+		}
 
-		const dlHelper = new THREE.DirectionalLightHelper(directionalLight, 3);
-		scene.add(directionalLight, dlHelper);
+		// add a grid position helper
+		this.scene.add(new THREE.GridHelper(10, 10));
+	}
 
-		controls = new OrbitControls(camera, renderer.domElement);
-
-		// controls.target = new THREE.Vector3(0, 2, 0); controls.update() must be called after any manual changes to the camera's transform
-		controls.update();
-
-		const loader = new GLTFLoader();
+	setDRACOLoader(loader: GLTFLoader) {
+		// load static draco decompressor
 		const dracoLoader = new DRACOLoader();
 		dracoLoader.setDecoderPath('./draco/');
 		dracoLoader.setDecoderConfig({ type: 'js' });
 		loader.setDRACOLoader(dracoLoader);
+	}
 
-		loader.load(
-			'./assets/chipboy/ChipBoy_SF.glb',
+	loadGLTF(debug: Boolean, path: String) {
+		// initialise loader and set decompressor
+		this.loader = new GLTFLoader();
+		this.setDRACOLoader(this.loader);
+
+		// take scene from class variables
+		let scene = this.scene;
+
+		// load chipboy model
+		this.loader.load(
+			path,
 			function (gltf: InitGLTFJSON) {
-				console.log(gltf);
-				model = gltf.scene;
-				// model.position.setX(0);
-				// model.position.setY(2);
-				// model.position.setZ(0);
+				let model = gltf.scene;
 				scene.add(model);
-				// camera.lookAt(model.position);
-				// camera.updateProjectionMatrix();
-				// controls.target(model.position);
-				// controls.update();
 			},
 			(xhr: OnLoadXHR) => {
-				console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+				debug && console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
 			},
 			(error: Error) => {
-				console.log(error);
+				debug && console.log(error);
 			}
 		);
-		camera.position.set(3, 1, 2);
-	};
+	}
 
-	const render = () => {
-		renderer.clear();
-		renderer.render(scene, camera);
-	};
+	render() {
+		this.renderer.clear();
+		this.renderer.render(this.scene, this.camera);
+	}
 
-	const animate = () => {
-		requestAnimationFrame(animate);
-		controls.update();
-
-		render();
-	};
-
-	init();
-	animate();
+	animate() {
+		// to be called every animation frame
+		this.controls.update();
+		this.render();
+	}
 }
