@@ -1,3 +1,12 @@
+# Luis Reyes Personal Website
+## Dev Log
+### 11/08/23
+- Use sveltekit to generate a static site -> for a personal portfolio website such as this, reactivity
+etc is not as important, for speed, network optimization, server and client load it would be much bettet
+to generate a static site. sveltekit has really good options for this
+- ThreeJS to add some WOW factor to the site. Will host these as static assets but should be wary of
+asset size. Use Draco to compress the 3D models
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
@@ -34,5 +43,7 @@ npm run build
 ```
 
 You can preview the production build with `npm run preview`.
+
+Use `npx serve build` to better emulate static deployment
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
