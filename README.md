@@ -1,11 +1,18 @@
 # Luis Reyes Personal Website
+
 ## Dev Log
+
 ### 11/08/23
-- Use sveltekit to generate a static site -> for a personal portfolio website such as this, reactivity
-etc is not as important, for speed, network optimization, server and client load it would be much bettet
-to generate a static site. sveltekit has really good options for this
-- ThreeJS to add some WOW factor to the site. Will host these as static assets but should be wary of
-asset size. Use Draco to compress the 3D models
+
+- Use sveltekit to generate a static site -> for a personal portfolio website such as this, reactivity etc is not as important, for speed, network optimization, server and client load it would be much bettet to generate a static site. sveltekit has really good options for this
+- ThreeJS to add some WOW factor to the site. Will host these as static assets but should be wary of asset size. Use Draco to compress the 3D models
+
+### 17/08/23
+
+- abstract away alot of 3js logic to a class to make it easy to add more / change models
+- add rotation animations to make it clear it is a 3d model, kept orbit controls in as it still looks okay after playing with camera view
+- chose tailwind slate for background color
+- used svelte stores to keep track of model loading progress and used css transitions to create a loading screen before homepage
 
 # create-svelte
 
