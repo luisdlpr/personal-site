@@ -4,20 +4,15 @@
 	import '$lib/global.css';
 	import '@fontsource/roboto';
 
-	let main;
-	let loadingContainer;
-	let loading;
+	let main: HTMLElement;
+	let loadingContainer: HTMLDivElement;
 
-	const progress = writable(0);
+	const loadProgress = writable(0);
 
-	const setLoadingComplete = () => {
-		loadingContainer.style.display = 'none';
-		main.style.display = 'block';
-	};
-
-	progress.subscribe((value) => {
+	loadProgress.subscribe((value) => {
 		if (value >= 100) {
-			setLoadingComplete();
+			loadingContainer.style.display = 'none';
+			main.style.display = 'block';
 		}
 	});
 </script>
@@ -34,11 +29,12 @@
 		</section>
 
 		<section>
-			<ThreejsScene --height="500px" progress={(newProgress) => ($progress = newProgress)} />
+			<ThreejsScene --height="50vh" progress={loadProgress} />
 		</section>
 	</main>
-	<div bind:this={loadingContainer}>
-		<progress value={$progress} max="100" />
+	<div id="loadingContainer" bind:this={loadingContainer}>
+		<label for="loadProgress"> Please Wait, Loading Experience </label>
+		<progress id="loadProgress" value={$loadProgress} max="100" />
 	</div>
 </body>
 
@@ -56,5 +52,18 @@
 
 	#title > h1 {
 		font-size: 5em;
+	}
+
+	#loadingContainer {
+		margin: 0;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
 	}
 </style>

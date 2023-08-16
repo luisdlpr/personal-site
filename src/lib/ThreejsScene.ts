@@ -7,6 +7,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 // @ts-ignore
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import type { Writable } from 'svelte/store';
 
 // custom types
 type OnLoadXHR = {
@@ -33,13 +34,7 @@ export class TScene {
 	renderer: THREE.WebGLRenderer;
 	scene: THREE.Scene;
 
-	constructor(
-		container: HTMLElement,
-		loadingIndicator: HTMLProgressElement,
-		loadingContainer: HTMLDivElement,
-		orbitControls: Boolean,
-		mainLoader: any
-	) {
+	constructor(container: HTMLElement, orbitControls: Boolean, loadingProgress: Writable<number>) {
 		// get width and height from container
 		const width = container.clientWidth;
 		const height = container.clientHeight;
@@ -59,7 +54,7 @@ export class TScene {
 
 		// initialise loading indicator
 		this.loadingManager = new THREE.LoadingManager();
-		this.addLoadingIndicator(loadingIndicator, loadingContainer, container, false, mainLoader);
+		this.addLoadingIndicator(false, loadingProgress);
 
 		// initialise controls
 		if (orbitControls) {
@@ -68,27 +63,17 @@ export class TScene {
 		}
 	}
 
-	addLoadingIndicator(
-		loadingIndicator: HTMLProgressElement,
-		loadingContainer: HTMLDivElement,
-		container: HTMLElement,
-		debug: boolean,
-		mainLoader: any
-	) {
+	addLoadingIndicator(debug: boolean, loadingProgress: Writable<number>) {
 		this.loadingManager.onStart = (url, _, __) => {
 			// codomain: url, item, total
 			debug && console.log(`started loading: ${url}`);
 		};
 
 		this.loadingManager.onProgress = (_, loaded, total) => {
-			loadingIndicator.value = (loaded / total) * 100;
-			mainLoader((loaded / total) * 100);
+			loadingProgress.set((loaded / total) * 100);
 		};
 
-		this.loadingManager.onLoad = () => {
-			container.style.display = 'block';
-			loadingContainer.style.display = 'none';
-		};
+		this.loadingManager.onLoad = () => {};
 
 		this.loadingManager.onError = (url) => {
 			console.error(url);
