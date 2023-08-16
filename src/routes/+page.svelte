@@ -2,6 +2,7 @@
 	import ThreejsScene from '$lib/ChipBoy.svelte';
 	import { writable } from 'svelte/store';
 	import '$lib/global.css';
+	import 'animate.css';
 	import '@fontsource/roboto';
 
 	let main: HTMLElement;
@@ -11,8 +12,12 @@
 
 	loadProgress.subscribe((value) => {
 		if (value >= 100) {
-			loadingContainer.style.display = 'none';
-			main.style.display = 'block';
+			loadingContainer.style.animation = 'fadeOut';
+			loadingContainer.style.animationDuration = '2s';
+			setTimeout(() => {
+				loadingContainer.style.display = 'none';
+				main.style.display = 'block';
+			}, 2000);
 		}
 	});
 </script>
@@ -28,7 +33,7 @@
 			<h2>Software/Web Developer - Sydney NSW</h2>
 		</section>
 
-		<section>
+		<section id="chipBoyScene">
 			<ThreejsScene --height="50vh" progress={loadProgress} />
 		</section>
 	</main>
@@ -44,6 +49,8 @@
 		align-items: center;
 		flex-direction: column;
 		gap: 2px;
+		animation: zoomIn;
+		animation-duration: 2s;
 	}
 
 	#title > * {
@@ -65,5 +72,10 @@
 		align-items: center;
 		justify-content: center;
 		gap: 10px;
+	}
+
+	#chipBoyScene {
+		animation: fadeIn;
+		animation-duration: 2s;
 	}
 </style>

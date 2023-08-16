@@ -33,6 +33,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/roboto": "^5.0.8",
+		"animate.css": "^4.1.1",
 		"svelte-resize-observer-action": "^0.0.3",
 		"three": "^0.155.0"
 	}
