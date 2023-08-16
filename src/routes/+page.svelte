@@ -48,17 +48,33 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		gap: 2px;
+		gap: 5px;
 		animation: zoomIn;
 		animation-duration: 2s;
+		width: 100%;
 	}
 
 	#title > * {
 		margin: 5px;
+		text-align: center;
 	}
 
 	#title > h1 {
-		font-size: 5em;
+		font-size: 5vw;
+	}
+
+	#title > h2 {
+		font-size: 2vw;
+	}
+
+	@media only screen and (max-width: 600px) {
+		#title > h1 {
+			font-size: 10vw;
+		}
+
+		#title > h2 {
+			font-size: 5vw;
+		}
 	}
 
 	#loadingContainer {
@@ -72,6 +88,7 @@
 		align-items: center;
 		justify-content: center;
 		gap: 10px;
+		text-align: center;
 	}
 
 	#chipBoyScene {
