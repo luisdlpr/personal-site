@@ -3,15 +3,17 @@
 	import { TScene } from '$lib/ThreejsScene';
 	import { onMount } from 'svelte';
 	import { resize } from 'svelte-resize-observer-action';
-	import CircularProgressBar from './CircularProgressBar.svelte';
 
 	// binds
 	let container: HTMLDivElement;
 	let loadingContainer: HTMLDivElement;
 	let loadingIndicator: HTMLProgressElement;
 
+	// props
+	export let progress: any;
+
 	function loadChipBoy() {
-		let chipBoyScene = new TScene(container, loadingIndicator, loadingContainer, true);
+		let chipBoyScene = new TScene(container, loadingIndicator, loadingContainer, true, progress);
 		chipBoyScene.addAmbientLight(0xfff2cc, 0.3);
 		chipBoyScene.addDirectionalLight(0xffffff, 3, { x: 3, y: 3, z: 0 });
 		chipBoyScene.loadGLTF(false, './assets/chipboy/ChipBoy_SF.glb', 1);

@@ -37,7 +37,8 @@ export class TScene {
 		container: HTMLElement,
 		loadingIndicator: HTMLProgressElement,
 		loadingContainer: HTMLDivElement,
-		orbitControls: Boolean
+		orbitControls: Boolean,
+		mainLoader: any
 	) {
 		// get width and height from container
 		const width = container.clientWidth;
@@ -58,7 +59,7 @@ export class TScene {
 
 		// initialise loading indicator
 		this.loadingManager = new THREE.LoadingManager();
-		this.addLoadingIndicator(loadingIndicator, loadingContainer, container, false);
+		this.addLoadingIndicator(loadingIndicator, loadingContainer, container, false, mainLoader);
 
 		// initialise controls
 		if (orbitControls) {
@@ -71,7 +72,8 @@ export class TScene {
 		loadingIndicator: HTMLProgressElement,
 		loadingContainer: HTMLDivElement,
 		container: HTMLElement,
-		debug: boolean
+		debug: boolean,
+		mainLoader: any
 	) {
 		this.loadingManager.onStart = (url, _, __) => {
 			// codomain: url, item, total
@@ -80,6 +82,7 @@ export class TScene {
 
 		this.loadingManager.onProgress = (_, loaded, total) => {
 			loadingIndicator.value = (loaded / total) * 100;
+			mainLoader((loaded / total) * 100);
 		};
 
 		this.loadingManager.onLoad = () => {
