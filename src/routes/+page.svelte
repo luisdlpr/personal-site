@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>SvelteKit + ThreeJS</title>
+	<title>Luis Vicente Reyes</title>
 </svelte:head>
 
 <body>

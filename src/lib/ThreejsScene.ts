@@ -29,10 +29,16 @@ export class TScene {
 	controls: any; //THREE.OrbitControls;
 	container: HTMLElement;
 	loader: any; // THREE.GLTFLoader
+	loadingManager: THREE.LoadingManager;
 	renderer: THREE.WebGLRenderer;
 	scene: THREE.Scene;
 
-	constructor(container: HTMLElement, orbitControls: Boolean) {
+	constructor(
+		container: HTMLElement,
+		loadingIndicator: HTMLProgressElement,
+		loadingContainer: HTMLDivElement,
+		orbitControls: Boolean
+	) {
 		// get width and height from container
 		const width = container.clientWidth;
 		const height = container.clientHeight;
@@ -50,11 +56,40 @@ export class TScene {
 		this.container = container;
 		this.container.appendChild(this.renderer.domElement);
 
+		// initialise loading indicator
+		this.loadingManager = new THREE.LoadingManager();
+		this.addLoadingIndicator(loadingIndicator, loadingContainer, container, false);
+
 		// initialise controls
 		if (orbitControls) {
 			this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 			this.controls.update();
 		}
+	}
+
+	addLoadingIndicator(
+		loadingIndicator: HTMLProgressElement,
+		loadingContainer: HTMLDivElement,
+		container: HTMLElement,
+		debug: boolean
+	) {
+		this.loadingManager.onStart = (url, _, __) => {
+			// codomain: url, item, total
+			debug && console.log(`started loading: ${url}`);
+		};
+
+		this.loadingManager.onProgress = (_, loaded, total) => {
+			loadingIndicator.value = (loaded / total) * 100;
+		};
+
+		this.loadingManager.onLoad = () => {
+			container.style.display = 'block';
+			loadingContainer.style.display = 'none';
+		};
+
+		this.loadingManager.onError = (url) => {
+			console.error(url);
+		};
 	}
 
 	addAmbientLight(hexColor: number, intensity: number) {
@@ -90,7 +125,7 @@ export class TScene {
 
 	setDRACOLoader(loader: GLTFLoader) {
 		// load static draco decompressor
-		const dracoLoader = new DRACOLoader();
+		const dracoLoader = new DRACOLoader(this.loadingManager);
 		dracoLoader.setDecoderPath('./draco/');
 		dracoLoader.setDecoderConfig({ type: 'js' });
 		loader.setDRACOLoader(dracoLoader);
@@ -98,7 +133,7 @@ export class TScene {
 
 	loadGLTF(debug: Boolean, path: String, yOffset: number) {
 		// initialise loader and set decompressor
-		this.loader = new GLTFLoader();
+		this.loader = new GLTFLoader(this.loadingManager);
 		this.setDRACOLoader(this.loader);
 
 		// take scene from class variables
@@ -107,7 +142,7 @@ export class TScene {
 		// load chipboy model
 		this.loader.load(
 			path,
-			function (gltf: InitGLTFJSON) {
+			(gltf: InitGLTFJSON) => {
 				let model = gltf.scene;
 				model.position.set(0, yOffset, 0);
 				scene.add(model);
