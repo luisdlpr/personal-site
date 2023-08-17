@@ -83,6 +83,10 @@
 		#title > h2 {
 			font-size: 5vw;
 		}
+
+		#homeContent {
+			flex-direction: column;
+		}
 	}
 
 	#loadingContainer {
@@ -113,7 +117,7 @@
 	#navigationSection {
 		display: flex;
 		flex-direction: column;
-		margin-left: 5em;
-		width: 50vw;
+		/* margin-left: 7em; */
+		width: 40vw;
 	}
 </style>
