@@ -33,8 +33,16 @@
 			<h2>Software/Web Developer - Sydney NSW</h2>
 		</section>
 
-		<section id="chipBoyScene">
-			<ThreejsScene --height="50vh" progress={loadProgress} />
+		<section id="homeContent">
+			<div id="navigationSection">
+				<a href="/"> About Me </a>
+				<a href="/"> Resume </a>
+				<a href="/"> Blog </a>
+				<a href="/"> Portfolio </a>
+			</div>
+			<div id="chipBoyScene">
+				<ThreejsScene --height="50vh" progress={loadProgress} />
+			</div>
 		</section>
 	</main>
 	<div id="loadingContainer" bind:this={loadingContainer}>
@@ -94,5 +102,18 @@
 	#chipBoyScene {
 		animation: fadeIn;
 		animation-duration: 2s;
+		width: 100%;
+	}
+
+	#homeContent {
+		display: flex;
+		align-items: center;
+	}
+
+	#navigationSection {
+		display: flex;
+		flex-direction: column;
+		margin-left: 5em;
+		width: 50vw;
 	}
 </style>
