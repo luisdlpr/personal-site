@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ThreejsScene from '$lib/ChipBoy.svelte';
+	import ThreejsScene from '$lib/chipboy/ChipBoy.svelte';
 	import { writable } from 'svelte/store';
 	import '$lib/global.css';
 	import 'animate.css';
@@ -35,7 +35,10 @@
 
 		<section id="homeContent">
 			<div id="navigationSection">
-				<a href="/"> About Me </a>
+				<div id="navigationTopDecoration">
+					<div id="exit" />
+				</div>
+				<a href="/"> About </a>
 				<a href="/"> Resume </a>
 				<a href="/"> Blog </a>
 				<a href="/"> Portfolio </a>
@@ -85,7 +88,7 @@
 		}
 
 		#homeContent {
-			flex-direction: column;
+			flex-direction: column-reverse;
 		}
 	}
 
@@ -117,7 +120,31 @@
 	#navigationSection {
 		display: flex;
 		flex-direction: column;
-		/* margin-left: 7em; */
+		margin: 2em;
+		border-radius: 5px;
 		width: 40vw;
+		background-color: var(--slate800);
+	}
+
+	#navigationSection > a {
+		margin: 1em 2em;
+	}
+
+	#navigationTopDecoration {
+		background-color: var(--slate400);
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		height: 1.5em;
+		margin: 0px;
+		display: flex;
+		align-items: center;
+	}
+
+	#exit {
+		background-color: red;
+		height: 1em;
+		width: 1em;
+		margin-left: 10px;
+		border-radius: 100%;
 	}
 </style>
