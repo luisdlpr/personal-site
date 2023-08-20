@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { location } from 'svelte-spa-router';
 	import Home from './Home/Home.svelte';
+	import NavBar from '$lib/navBar/NavBar.svelte';
 	import About from './About/About.svelte';
 	import Resume from './Resume/Resume.svelte';
 	import Blog from './Blog/Blog.svelte';
@@ -24,16 +25,17 @@
 	<div bind:this={home}>
 		<Home />
 	</div>
+	{#if $location != '/'}
+		<NavBar />
+	{/if}
+
 	{#if $location == '/about'}
 		<About />
-	{/if}
-	{#if $location == '/resume'}
+	{:else if $location == '/resume'}
 		<Resume />
-	{/if}
-	{#if $location == '/blog'}
+	{:else if $location == '/blog'}
 		<Blog />
-	{/if}
-	{#if $location == '/portfolio'}
+	{:else if $location == '/portfolio'}
 		<Portfolio />
 	{/if}
 </body>
