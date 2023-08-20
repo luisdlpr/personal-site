@@ -14,6 +14,11 @@
 - chose tailwind slate for background color
 - used svelte stores to keep track of model loading progress and used css transitions to create a loading screen before homepage
 
+### 21/08/23
+- Developed the rest of the homepage (just need to add links for socials). Created a component for a mock osx window for decoration to present links. Thinking about adding chipboy inside this decoration window but still undecided.
+- developed custom navbar as I couldnt find a navbar component suited for the website. Maybe should have went with a component library earlier on but it worked out fine and probably is better to make this website stand out
+- implemented custom SPA routing as I wanted to keep the chipboy loaded so that navigating back to the homepage would not result in another loading screen.
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
