@@ -11,15 +11,15 @@
 	#window {
 		display: flex;
 		flex-direction: column;
-		border-radius: 5px;
+		border-radius: 10px;
 		background-color: var(--slate800);
 		filter: drop-shadow(4px 4px 4px var(--slate950));
 	}
 
 	#windowTopDecoration {
 		background-color: var(--slate400);
-		border-top-left-radius: 5px;
-		border-top-right-radius: 5px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
 		height: 1.5em;
 		margin: 0px;
 		display: flex;

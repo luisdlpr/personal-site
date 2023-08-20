@@ -1,0 +1,2 @@
+<div>about page</div>
+<a href="/#/"> back to home </a>
