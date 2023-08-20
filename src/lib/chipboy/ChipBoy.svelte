@@ -1,6 +1,6 @@
 <script lang="ts">
 	// set up three js scene
-	import { TScene } from '$lib/ThreejsScene';
+	import { TScene } from '$lib/chipboy/ThreejsScene';
 	import { onMount } from 'svelte';
 	import { resize } from 'svelte-resize-observer-action';
 	import type { Writable } from 'svelte/store';

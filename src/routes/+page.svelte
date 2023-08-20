@@ -1,5 +1,6 @@
 <script lang="ts">
-	import ThreejsScene from '$lib/ChipBoy.svelte';
+	import ThreejsScene from '$lib/chipboy/ChipBoy.svelte';
+	import MockBrowserWindow from '$lib/mockBrowserWindow/MockBrowserWindow.svelte';
 	import { writable } from 'svelte/store';
 	import '$lib/global.css';
 	import 'animate.css';
@@ -33,8 +34,33 @@
 			<h2>Software/Web Developer - Sydney NSW</h2>
 		</section>
 
-		<section id="chipBoyScene">
-			<ThreejsScene --height="50vh" progress={loadProgress} />
+		<section id="homeContent">
+			<div id="mockWindowContainer">
+				<MockBrowserWindow>
+					<div id="navigationSection" slot="content">
+						<a href="/"> About </a>
+						<a href="/"> Resume </a>
+						<a href="/"> Blog </a>
+						<a href="/"> Portfolio </a>
+					</div>
+				</MockBrowserWindow>
+			</div>
+			<div id="chipBoyScene">
+				<ThreejsScene --height="50vh" progress={loadProgress} />
+			</div>
+		</section>
+		<section id="homeFooter">
+			<span>Powered by Sveltekit.</span>
+			<span>
+				This work is based on
+				<a href="https://sketchfab.com/3d-models/chipboy-f51dd390165c471fb84078b42ccd35ad">
+					"ChipBoy"
+				</a>
+				by
+				<a href="https://sketchfab.com/jameshorn">James Horn</a>
+				licensed under
+				<a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a>.
+			</span>
 		</section>
 	</main>
 	<div id="loadingContainer" bind:this={loadingContainer}>
@@ -52,6 +78,7 @@
 		animation: zoomIn;
 		animation-duration: 2s;
 		width: 100%;
+		margin-bottom: 10px;
 	}
 
 	#title > * {
@@ -61,10 +88,12 @@
 
 	#title > h1 {
 		font-size: 5vw;
+		/* font-size: 10vw; */
 	}
 
 	#title > h2 {
 		font-size: 2vw;
+		/* font-size: 5vw; */
 	}
 
 	@media only screen and (max-width: 600px) {
@@ -74,6 +103,15 @@
 
 		#title > h2 {
 			font-size: 5vw;
+		}
+
+		#homeContent {
+			flex-direction: column-reverse;
+			gap: 0px;
+		}
+
+		#chipBoyScene {
+			width: 100%;
 		}
 	}
 
@@ -92,6 +130,49 @@
 	}
 
 	#chipBoyScene {
+		animation: fadeIn;
+		animation-duration: 2s;
+		width: 60vh;
+		max-width: 100%;
+	}
+
+	#mockWindowContainer {
+		animation: slideInLeft;
+		animation-duration: 2s;
+		width: 50vh;
+		max-width: 100%;
+		margin: 2em;
+		margin-top: 0px;
+	}
+
+	#homeContent {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 2em;
+	}
+
+	#navigationSection {
+		display: flex;
+		margin: 2em;
+		flex-direction: column;
+		gap: 1em;
+	}
+
+	#navigationSection > a {
+		font-size: 2em;
+		text-align: center;
+		text-decoration: none;
+		padding: 5px;
+		width: 100%;
+		border-radius: 10px;
+		background-color: var(--slate500);
+	}
+
+	#homeFooter {
+		font-size: 0.8em;
+		width: 100%;
+		text-align: center;
 		animation: fadeIn;
 		animation-duration: 2s;
 	}
