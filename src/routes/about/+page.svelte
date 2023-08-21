@@ -1,6 +1,17 @@
 <script lang="ts">
 	import MockBrowserWindow from '$lib/mockBrowserWindow/MockBrowserWindow.svelte';
+	import { onMount } from 'svelte';
+
+	let toHash: HTMLAnchorElement;
+
+	onMount(() => {
+		if (window.location.pathname == '/about/') {
+			toHash.click();
+		}
+	});
 </script>
+
+<a style="display: none;" href="/#/about" bind:this={toHash}>to about hash</a>
 
 <h1>Hello World!</h1>
 

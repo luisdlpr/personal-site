@@ -1,7 +1,18 @@
 <script lang="ts">
 	import blog from '$lib/blog.json';
 	import MockBrowserWindow from '$lib/mockBrowserWindow/MockBrowserWindow.svelte';
+	import { onMount } from 'svelte';
+
+	let toHash: HTMLAnchorElement;
+
+	onMount(() => {
+		if (window.location.pathname == '/blog/') {
+			toHash.click();
+		}
+	});
 </script>
+
+<a style="display: none;" href="/#/blog" bind:this={toHash}>to blog hash</a>
 
 <h1>Dev Blog</h1>
 
@@ -9,7 +20,7 @@
 	<section class="blogPostContainer">
 		<MockBrowserWindow>
 			<div class="blogPost" slot="content">
-				<h2><i>{post.date}</i>: <strong>{post.title}</strong></h2>
+				<h2><i>({post.date})</i> <strong>{post.title}</strong></h2>
 				<p>{post.post}</p>
 			</div>
 		</MockBrowserWindow>
@@ -21,7 +32,21 @@
 		font-weight: 400;
 	}
 
+	h1 {
+		animation: slideInUp;
+		animation-duration: 2s;
+	}
+
+	h2 {
+		margin-top: 0.5em;
+	}
+
 	.blogPost {
 		margin: 1em;
+	}
+
+	.blogPostContainer {
+		animation: slideInUp;
+		animation-duration: 2s;
 	}
 </style>
