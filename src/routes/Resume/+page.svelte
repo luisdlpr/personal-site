@@ -2,7 +2,6 @@
 	import '$lib/global.css';
 	import resume from '$lib/resume.json';
 	import MockBrowserWindow from '$lib/mockBrowserWindow/MockBrowserWindow.svelte';
-	import { redirect } from '@sveltejs/kit';
 	import { onMount } from 'svelte';
 
 	let toHash: HTMLAnchorElement;
@@ -101,7 +100,7 @@
 						<div style="margin-bottom: 1em;">{project.description}</div>
 						{#if project.title === 'BingusEats'}
 							<MockBrowserWindow>
-								<div slot="content" class="projectScreenshots">
+								<figure slot="content" class="projectScreenshots">
 									<img
 										width="25%"
 										src="/assets/bingusEats/diner_menu.png"
@@ -112,7 +111,7 @@
 										src="/assets/bingusEats/menu_rec.png"
 										alt="bingusEats Diner Rec"
 									/>
-								</div>
+								</figure>
 							</MockBrowserWindow>
 						{/if}
 					</div>
