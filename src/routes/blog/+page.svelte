@@ -9,7 +9,7 @@
 	<section class="blogPostContainer">
 		<MockBrowserWindow>
 			<div class="blogPost" slot="content">
-				<h2><i>{post.date}</i>: <strong>{post.title}</strong></h2>
+				<h2><i>({post.date})</i> <strong>{post.title}</strong></h2>
 				<p>{post.post}</p>
 			</div>
 		</MockBrowserWindow>
@@ -21,7 +21,21 @@
 		font-weight: 400;
 	}
 
+	h1 {
+		animation: slideInUp;
+		animation-duration: 2s;
+	}
+
+	h2 {
+		margin-top: 0.5em;
+	}
+
 	.blogPost {
 		margin: 1em;
+	}
+
+	.blogPostContainer {
+		animation: slideInUp;
+		animation-duration: 2s;
 	}
 </style>
