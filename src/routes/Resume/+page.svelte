@@ -86,7 +86,23 @@
 								{/each}
 							</div>
 						</h2>
-						<div>{project.description}</div>
+						<div style="margin-bottom: 1em;">{project.description}</div>
+						{#if project.title === 'BingusEats'}
+							<MockBrowserWindow>
+								<div slot="content" class="projectScreenshots">
+									<img
+										width="25%"
+										src="/assets/bingusEats/diner_menu.png"
+										alt="bingusEats Diner Menu"
+									/>
+									<img
+										width="25%"
+										src="/assets/bingusEats/menu_rec.png"
+										alt="bingusEats Diner Rec"
+									/>
+								</div>
+							</MockBrowserWindow>
+						{/if}
 					</div>
 				{/each}
 			</section>
@@ -204,6 +220,13 @@
 
 	.mainTitle {
 		margin: 0em;
+	}
+
+	.projectScreenshots {
+		display: flex;
+		justify-content: center;
+		gap: 10px;
+		margin: 1em;
 	}
 
 	#downloadLink {
