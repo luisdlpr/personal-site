@@ -1,168 +1,221 @@
 <script lang="ts">
-	const contact = ['+61 466 682 252', 'reyesluichi@hotmail.com', '/luisdlpr', '/in/luisvldpreyes'];
-	const skills = [
-		'C',
-		'Python',
-		'Java',
-		'Perl',
-		'JavaScript',
-		'React',
-		'Express',
-		'Svelte',
-		'Flask',
-		'Docker',
-		'AWS',
-		'TerraForm',
-		'SQL',
-		'Agile (Scrum, Jira)',
-		'Teamwork (Teams, Slack, Git)'
-	];
-	const education = [
-		{
-			title: 'Bachelor of Engineering (Honours) (Mechanical)/Science (Computer Science)',
-			provider: 'UNSW',
-			details: 'AAA Scholarship, WAM: 80.94.',
-			year: '2023'
-		},
-		{
-			title: 'The Web Developer Bootcamp',
-			provider: 'Colt Steele',
-			details: 'HTML, JavaScript, CSS, noSQL (MongoDB).',
-			year: '2022'
-		},
-		{
-			title: 'High School Certificate',
-			provider: 'St John Paul II Catholic College',
-			details:
-				'ATAR: 93.6, HSC High Achievers Award, Gold Academic Award, 2x Silver Academic Award.',
-			year: '2017'
-		}
-	];
-	const experiences = [
-		{
-			title: 'Web Developer (Intern & Part Time)',
-			provider: 'MOBLE Pty Ltd',
-			details: [
-				'Developed Web-scrapers using Playwright.js tp assist in data migration.',
-				'Maintaining and improving QHSE management tool using a hybrid stack (Express, Svelte, Template Toolkit, Perl, PostgreSQL).'
-			],
-			year: '2022-Present'
-		},
-		{
-			title: 'Software Developer Intern',
-			provider: 'Akuna Capital',
-			details: [
-				'Worked in the Data Engineering team to optimise AWS S3 usage. Identified over $4000 in potential savings.',
-				'Developed scanning tool design for big data (10+ billion rows) deployable through Docker and Databricks.',
-				'Used Terraform to adjust S3 lifecycle policies/inventory logging and applied changes using Atlantis.'
-			],
-			year: '2022-2023'
-		},
-		{
-			title: 'Mechanical Engineering Vacation Student',
-			provider: 'Aeris Resources, Tritton Ops',
-			details: [
-				'Produced engineering drawings (CAD) for 21 seperate projects and revised based on feedback from clients.',
-				'Led planning, procurement, and installation of a compressed air drying unit for underground mine air.'
-			],
-			year: '2020-2021'
-		}
-	];
-
-	const projects = [
-		{
-			title: 'BingusEats',
-			summary: 'Full Stack Wait Management System',
-			tech: ['React', 'Express', 'PostgreSQL'],
-			description:
-				'Please Request Access. Full Stack Wait Management System using a PERN stack in a team for a university capstone project. Functions similarly to Me&U with some novel functionalities such as menu versioning and a recommendation algorithm based on weather and food tags'
-		},
-		{
-			title: 'DungeonSlayer',
-			summary: 'Browser Based Dungeon Crawler Game',
-			tech: ['Java', 'OOP/OOD'],
-			description:
-				'Developed with a team focusing on Object Oriented Design/Programming. Developement process with UML diagram and ER mapping can be found on the Github Repo'
-		}
-	];
-
-	const ec = [
-		'Active Guitarist in High School Music events including Creative Arts Nights, Open Days, School Lunchtime Concerts, and 2014 and 2016 School Musicals (Apollo 14, Back to the 80s). Band A leader in 2016 Musical.',
-		'1st Place (u74 kg Jr Division) in Hercules of The Hills 11 Powerlifting Competition and amateur coach (3 clients).'
-	];
+	import '$lib/global.css';
+	import resume from '$lib/resume.json';
+	import MockBrowserWindow from '$lib/mockBrowserWindow/MockBrowserWindow.svelte';
 </script>
 
-<h1>Resume/CV</h1>
-<div>
-	<a href="/assets/resume.pdf" target="_blank">Download</a> a copy
-</div>
+<header>
+	<h1 class="mainTitle">Resume/CV</h1>
+	<a id="downloadLink" href="/assets/resume.pdf" target="_blank">Download a copy </a>
+</header>
 
-<main>
-	<section id="information">
-		<h1>Luis Vicente Reyes</h1>
-		<h2>Sydney, NSW</h2>
-		{#each contact as method}
-			<div class="bubble">{method}</div>
-		{/each}
-	</section>
+<MockBrowserWindow>
+	<main slot="content">
+		<section id="information">
+			<h1>Luis Vicente Reyes</h1>
+			<div id="contactLinks">
+				{#each resume.contact as method}
+					<a class="bubble" href={method.fullLink}>
+						<svg
+							class="socialBubble"
+							xmlns="http://www.w3.org/2000/svg"
+							height="1em"
+							viewBox="0 0 448 512"><path d={method.logo} /></svg
+						>
+						{method.subLink}
+					</a>
+				{/each}
+			</div>
+			<h2>Sydney, NSW</h2>
+		</section>
 
-	<section id="objective">
-		<p>
-			Final year BEng(Mech)(Hons)/CS dual degree student seeking a Graduate Web Development or
-			Software Engineering role.
-		</p>
-	</section>
+		<section id="objective">
+			<p>
+				Final year Bachelor of Engineering (Mechanical) (Honours)/Science (Computer Science) dual
+				degree student seeking a Graduate Web Development or Software Engineering role.
+			</p>
+		</section>
 
-	<section id="skills">
-		<h1>Skills</h1>
-		{#each skills as skill}
-			<div class="bubble">{skill}</div>
-		{/each}
-	</section>
+		<section id="skills">
+			<h1>Skills</h1>
+			<div class="bubbleContainer insetSection">
+				{#each resume.skills as skill}
+					<div class="bubble">{skill}</div>
+				{/each}
+			</div>
+		</section>
 
-	<section id="education">
-		<h1>Education</h1>
-		{#each education as qualification}
-			<div>{qualification.title}, {qualification.provider}</div>
-			<div>{qualification.details}, {qualification.year}</div>
-		{/each}
-	</section>
-
-	<section id="experience">
-		<h1>Experience</h1>
-		{#each experiences as experience}
-			<div>{experience.title}, {experience.provider}</div>
-			<div>{experience.year}</div>
-			{#each experience.details as achievement}
-				<div>{achievement}</div>
+		<section id="education">
+			<h1>Education</h1>
+			{#each resume.education as qualification}
+				<div class="insetSection">
+					<h2>
+						<span><strong>{qualification.title},</strong> <i>{qualification.provider}</i></span>
+						<i class="year">{qualification.year}</i>
+					</h2>
+					<div>{qualification.details}</div>
+				</div>
 			{/each}
-		{/each}
-	</section>
+		</section>
 
-	<section id="projects">
-		<h1>Projects</h1>
-		{#each projects as project}
-			<div>{project.title}, {project.summary}</div>
-			{#each project.tech as tech}
-				<div>{tech}</div>
+		<section id="experience">
+			<h1>Experience</h1>
+			{#each resume.experiences as experience}
+				<div class="insetSection">
+					<h2>
+						<span><strong>{experience.title},</strong> <i>{experience.provider}</i></span>
+						<i class="year">{experience.year}</i>
+					</h2>
+					{#each experience.details as achievement}
+						<div>- {achievement}</div>
+					{/each}
+				</div>
 			{/each}
-			<div>{project.description}</div>
-		{/each}
-	</section>
+		</section>
 
-	<section id="extracirricular">
-		<h1>Extra Cirricular</h1>
-		{#each ec as activity}
-			<div>{activity}</div>
-		{/each}
-	</section>
-</main>
+		<section id="projects">
+			<h1>Projects</h1>
+			{#each resume.projects as project}
+				<div class="insetSection">
+					<h2>
+						<span><strong>{project.title},</strong> <i>{project.summary}</i></span>
+						<div class="techContainer">
+							{#each project.tech as tech}
+								<i class="bubble tech">{tech}</i>
+							{/each}
+						</div>
+					</h2>
+					<div>{project.description}</div>
+				</div>
+			{/each}
+		</section>
+
+		<section id="extracirricular">
+			<h1>Extra Cirricular</h1>
+			{#each resume.ec as activity}
+				<div class="insetSection">{activity}</div>
+			{/each}
+		</section>
+	</main>
+</MockBrowserWindow>
 
 <style>
+	h1 {
+		font-size: 2em;
+	}
+
+	h2 {
+		font-size: 1.5em;
+	}
+
 	main {
-		background-color: var(--slate700);
+		background-color: var(--slate800);
 		margin: 1em;
 		padding: 1em;
 		border-radius: 10px;
+	}
+
+	strong {
+		font-weight: 600;
+	}
+
+	#information {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	#contactLinks {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em;
+		align-items: flex-end;
+	}
+
+	#objective {
+		font-style: italic;
+	}
+
+	@media only screen and (max-width: 1024px) {
+		#information {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+
+	@media only screen and (max-width: 600px) {
+		.insetSection > h2 {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+
+	.bubble {
+		display: flex;
+		align-items: center;
+		background-color: var(--slate900);
+		padding: 0.5em;
+		border-radius: 2em;
+		box-shadow: inset 0 0 10px var(--slate950);
+	}
+
+	.socialBubble {
+		fill: var(--slate200);
+		margin: 0em 0.2em;
+	}
+
+	.bubbleContainer {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+	}
+
+	.insetSection > h2 {
+		display: flex;
+		justify-content: space-between;
+		margin: 0em 0em 0.5em 0em;
+	}
+
+	.insetSection {
+		background-color: var(--slate700);
+		padding: 1em;
+		margin: 1em;
+		border-radius: 10px;
+		box-shadow: inset 0 0 10px var(--slate800);
+	}
+
+	.year {
+		font-size: 1em;
+		text-align: right;
+		white-space: nowrap;
+	}
+
+	.tech {
+		font-size: 0.5em;
+		height: 1em;
+	}
+
+	.techContainer {
+		display: flex;
+		gap: 0.5em;
+	}
+
+	.mainTitle {
+		margin: 0em;
+	}
+
+	#downloadLink {
+		display: block;
+		background-color: var(--slate950);
+		border-radius: 10px;
+		margin: 1em;
+		padding: 1em;
+		text-decoration: none;
+		text-align: center;
+	}
+
+	header {
+		display: flex;
+		align-items: center;
 	}
 </style>
