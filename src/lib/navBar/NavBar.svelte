@@ -4,6 +4,13 @@
 	let smallLinksDropDown: HTMLDivElement;
 	let barIcon: SVGElement;
 
+	const links = [
+		{ title: 'About', link: '/#/about' },
+		{ title: 'Resume', link: '/#/resume' },
+		{ title: 'Blog', link: '/#/blog' },
+		{ title: 'Portfolio', link: '/#/portfolio' }
+	];
+
 	const toggleNav = () => {
 		if (nav) {
 			smallLinksDropDown.style.paddingLeft = '0em';
@@ -26,10 +33,9 @@
 	<a id="title" href="/#/"> Luis Reyes </a>
 	{#if screenSize >= 600}
 		<div id="links">
-			<a class="pageLink" href="/#/about"> About </a>
-			<a class="pageLink" href="/#/resume"> Resume </a>
-			<a class="pageLink" href="/#/blog"> Blog </a>
-			<a class="pageLink" href="/#/portfolio"> Portfolio </a>
+			{#each links as link}
+				<a class="pageLink" href={link.link}> {link.title} </a>
+			{/each}
 		</div>
 	{:else}
 		<div id="smallLinks">
@@ -59,10 +65,9 @@
 	class="smallLinksDropdownClosed"
 	style="top: 80px;"
 >
-	<a class="pageLink" href="/#/about"> About </a>
-	<a class="pageLink" href="/#/resume"> Resume </a>
-	<a class="pageLink" href="/#/blog"> Blog </a>
-	<a class="pageLink" href="/#/portfolio"> Portfolio </a>
+	{#each links as link}
+		<a class="pageLink" href={link.link}> {link.title} </a>
+	{/each}
 </div>
 <div id="navbarOffset" style="height: 30px;" />
 
@@ -108,7 +113,7 @@
 		padding: 1em 2em;
 		border-radius: 10px;
 		background-color: var(--slate800);
-		animation: slideInRight;
+		animation: fadeInDown;
 		animation-duration: 1s;
 	}
 
