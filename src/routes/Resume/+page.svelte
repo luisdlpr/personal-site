@@ -9,95 +9,97 @@
 	<a id="downloadLink" href="/assets/resume.pdf" target="_blank">Download a copy </a>
 </header>
 
-<MockBrowserWindow>
-	<main slot="content">
-		<section id="information">
-			<h1>Luis Vicente Reyes</h1>
-			<div id="contactLinks">
-				{#each resume.contact as method}
-					<a class="bubble" href={method.fullLink}>
-						<svg
-							class="socialBubble"
-							xmlns="http://www.w3.org/2000/svg"
-							height="1em"
-							viewBox="0 0 448 512"><path d={method.logo} /></svg
-						>
-						{method.subLink}
-					</a>
-				{/each}
-			</div>
-			<h2>Sydney, NSW</h2>
-		</section>
-
-		<section id="objective">
-			<p>
-				Final year Bachelor of Engineering (Mechanical) (Honours)/Science (Computer Science) dual
-				degree student seeking a Graduate Web Development or Software Engineering role.
-			</p>
-		</section>
-
-		<section id="skills">
-			<h1>Skills</h1>
-			<div class="bubbleContainer insetSection">
-				{#each resume.skills as skill}
-					<div class="bubble">{skill}</div>
-				{/each}
-			</div>
-		</section>
-
-		<section id="education">
-			<h1>Education</h1>
-			{#each resume.education as qualification}
-				<div class="insetSection">
-					<h2>
-						<span><strong>{qualification.title},</strong> <i>{qualification.provider}</i></span>
-						<i class="year">{qualification.year}</i>
-					</h2>
-					<div>{qualification.details}</div>
-				</div>
-			{/each}
-		</section>
-
-		<section id="experience">
-			<h1>Experience</h1>
-			{#each resume.experiences as experience}
-				<div class="insetSection">
-					<h2>
-						<span><strong>{experience.title},</strong> <i>{experience.provider}</i></span>
-						<i class="year">{experience.year}</i>
-					</h2>
-					{#each experience.details as achievement}
-						<div>- {achievement}</div>
+<body>
+	<MockBrowserWindow>
+		<main slot="content">
+			<section id="information">
+				<h1>Luis Vicente Reyes</h1>
+				<div id="contactLinks">
+					{#each resume.contact as method}
+						<a class="bubble" href={method.fullLink}>
+							<svg
+								class="socialBubble"
+								xmlns="http://www.w3.org/2000/svg"
+								height="1em"
+								viewBox="0 0 448 512"><path d={method.logo} /></svg
+							>
+							{method.subLink}
+						</a>
 					{/each}
 				</div>
-			{/each}
-		</section>
+				<h2>Sydney, NSW</h2>
+			</section>
 
-		<section id="projects">
-			<h1>Projects</h1>
-			{#each resume.projects as project}
-				<div class="insetSection">
-					<h2>
-						<span><strong>{project.title},</strong> <i>{project.summary}</i></span>
-						<div class="techContainer">
-							{#each project.tech as tech}
-								<i class="bubble tech">{tech}</i>
-							{/each}
-						</div>
-					</h2>
-					<div>{project.description}</div>
+			<section id="objective">
+				<p>
+					Final year Bachelor of Engineering (Mechanical) (Honours)/Science (Computer Science) dual
+					degree student seeking a Graduate Web Development or Software Engineering role.
+				</p>
+			</section>
+
+			<section id="skills">
+				<h1>Skills</h1>
+				<div class="bubbleContainer insetSection">
+					{#each resume.skills as skill}
+						<div class="bubble">{skill}</div>
+					{/each}
 				</div>
-			{/each}
-		</section>
+			</section>
 
-		<section id="extracirricular">
-			<h1>Extra Cirricular</h1>
-			{#each resume.ec as activity}
-				<div class="insetSection">{activity}</div>
-			{/each}
-		</section>
-	</main>
-</MockBrowserWindow>
+			<section id="education">
+				<h1>Education</h1>
+				{#each resume.education as qualification}
+					<div class="insetSection">
+						<h2>
+							<span><strong>{qualification.title},</strong> <i>{qualification.provider}</i></span>
+							<i class="year">{qualification.year}</i>
+						</h2>
+						<div>{qualification.details}</div>
+					</div>
+				{/each}
+			</section>
+
+			<section id="experience">
+				<h1>Experience</h1>
+				{#each resume.experiences as experience}
+					<div class="insetSection">
+						<h2>
+							<span><strong>{experience.title},</strong> <i>{experience.provider}</i></span>
+							<i class="year">{experience.year}</i>
+						</h2>
+						{#each experience.details as achievement}
+							<div>- {achievement}</div>
+						{/each}
+					</div>
+				{/each}
+			</section>
+
+			<section id="projects">
+				<h1>Projects</h1>
+				{#each resume.projects as project}
+					<div class="insetSection">
+						<h2>
+							<span><strong>{project.title},</strong> <i>{project.summary}</i></span>
+							<div class="techContainer">
+								{#each project.tech as tech}
+									<i class="bubble tech">{tech}</i>
+								{/each}
+							</div>
+						</h2>
+						<div>{project.description}</div>
+					</div>
+				{/each}
+			</section>
+
+			<section id="extracirricular">
+				<h1>Extra Cirricular</h1>
+				{#each resume.ec as activity}
+					<div class="insetSection">{activity}</div>
+				{/each}
+			</section>
+		</main>
+	</MockBrowserWindow>
+</body>
 
 <style>
 	h1 {
@@ -217,5 +219,12 @@
 	header {
 		display: flex;
 		align-items: center;
+		animation: fadeIn;
+		animation-duration: 2s;
+	}
+
+	body {
+		animation: zoomIn;
+		animation-duration: 2s;
 	}
 </style>
