@@ -1,7 +1,18 @@
 <script lang="ts">
 	import blog from '$lib/blog.json';
 	import MockBrowserWindow from '$lib/mockBrowserWindow/MockBrowserWindow.svelte';
+	import { onMount } from 'svelte';
+
+	let toHash: HTMLAnchorElement;
+
+	onMount(() => {
+		if (window.location.pathname == '/blog/') {
+			toHash.click();
+		}
+	});
 </script>
+
+<a style="display: none;" href="/#/blog" bind:this={toHash}>to blog hash</a>
 
 <h1>Dev Blog</h1>
 
