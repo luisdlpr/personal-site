@@ -1,20 +1,28 @@
 <script lang="ts">
+	import linksJSON from '$lib/links.json';
+	import socialsJSON from '$lib/socials.json';
+
 	let screenSize: number;
 	let nav: boolean = false;
 	let smallLinksDropDown: HTMLDivElement;
 	let barIcon: SVGElement;
+
+	const links = linksJSON.links;
+	const socials = socialsJSON.links;
 
 	const toggleNav = () => {
 		if (nav) {
 			smallLinksDropDown.style.paddingLeft = '0em';
 			smallLinksDropDown.style.paddingRight = '0em';
 			smallLinksDropDown.style.width = '0';
+			smallLinksDropDown.style.borderWidth = '0px';
 			barIcon.style.opacity = '0.3';
 			nav = !nav;
 		} else {
 			smallLinksDropDown.style.paddingLeft = '1em';
 			smallLinksDropDown.style.paddingRight = '1em';
 			smallLinksDropDown.style.width = '30vw';
+			smallLinksDropDown.style.borderWidth = '1px';
 			barIcon.style.opacity = '1';
 			nav = !nav;
 		}
@@ -24,24 +32,37 @@
 <svelte:window bind:innerWidth={screenSize} />
 <nav>
 	<a id="title" href="/#/"> Luis Reyes </a>
-	{#if screenSize >= 600}
+	{#if screenSize >= 700}
 		<div id="links">
-			<a class="pageLink" href="/#/about"> About </a>
-			<a class="pageLink" href="/#/resume"> Resume </a>
-			<a class="pageLink" href="/#/blog"> Blog </a>
-			<a class="pageLink" href="/#/portfolio"> Portfolio </a>
+			{#each links as link}
+				<a class="pageLink" href={link.link}> {link.title} </a>
+			{/each}
+		</div>
+		<div id="socialLinks">
+			{#each socials as link}
+				<a href={link.link}>
+					<svg
+						class="socialLink"
+						xmlns="http://www.w3.org/2000/svg"
+						height="1em"
+						viewBox="0 0 448 512"><path d={link.logo} /></svg
+					>
+				</a>
+			{/each}
 		</div>
 	{:else}
 		<div id="smallLinks">
 			<button on:click={toggleNav}>
 				<svg
+					id="barIcon"
 					bind:this={barIcon}
 					xmlns="http://www.w3.org/2000/svg"
 					height="2em"
 					viewBox="0 0 448 512"
+					aria-label="navigation links"
 				>
 					<style>
-						svg {
+						#barIcon {
 							fill: #e2e8f0;
 							opacity: 0.3;
 						}
@@ -59,10 +80,13 @@
 	class="smallLinksDropdownClosed"
 	style="top: 80px;"
 >
-	<a class="pageLink" href="/#/about"> About </a>
-	<a class="pageLink" href="/#/resume"> Resume </a>
-	<a class="pageLink" href="/#/blog"> Blog </a>
-	<a class="pageLink" href="/#/portfolio"> Portfolio </a>
+	{#each links as link}
+		<a class="pageLink" href={link.link}> {link.title} </a>
+	{/each}
+	<hr style="width: 100%;" />
+	{#each socials as link}
+		<a class="pageLink" href={link.link}> {link.title} </a>
+	{/each}
 </div>
 <div id="navbarOffset" style="height: 30px;" />
 
@@ -77,9 +101,11 @@
 	}
 
 	#smallLinksDropdown {
+		z-index: 100;
 		position: fixed;
 		right: 0px;
 		background-color: var(--slate800);
+		border: 0px solid var(--slate200);
 		padding-top: 1em;
 		padding-bottom: 1em;
 		border-radius: 10px;
@@ -101,6 +127,7 @@
 
 	nav {
 		position: sticky;
+		z-index: 100;
 		top: 1em;
 		display: flex;
 		align-items: center;
@@ -108,12 +135,19 @@
 		padding: 1em 2em;
 		border-radius: 10px;
 		background-color: var(--slate800);
-		animation: slideInRight;
+		border: 1px solid var(--slate200);
+		animation: fadeInDown;
 		animation-duration: 1s;
 	}
 
 	#links {
 		display: flex;
 		gap: 1em;
+		align-items: center;
+	}
+
+	.socialLink {
+		fill: var(--slate200);
+		margin: 0em 0.2em;
 	}
 </style>

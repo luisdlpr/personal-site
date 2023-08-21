@@ -1,6 +1,8 @@
 <script lang="ts">
 	import ThreejsScene from '$lib/chipboy/ChipBoy.svelte';
 	import MockBrowserWindow from '$lib/mockBrowserWindow/MockBrowserWindow.svelte';
+	import linksJSON from '$lib/links.json';
+	import socialsJSON from '$lib/socials.json';
 	import { writable } from 'svelte/store';
 	import '$lib/global.css';
 	import 'animate.css';
@@ -10,6 +12,9 @@
 	let loadingContainer: HTMLDivElement;
 
 	const loadProgress = writable(0);
+
+	const links = linksJSON.links;
+	const socials = socialsJSON.links;
 
 	loadProgress.subscribe((value) => {
 		if (value >= 100) {
@@ -31,17 +36,28 @@
 	<main style="display: none;" bind:this={main}>
 		<section id="title">
 			<h1>Luis Vicente Reyes</h1>
-			<h2>Software/Web Developer - Sydney NSW</h2>
+			<div id="subtitle">
+				<h2>Software/Web Developer - Sydney NSW</h2>
+				{#each socials as link}
+					<a href={link.link} style="text-decoration: none;">
+						<svg
+							class="socialLink"
+							xmlns="http://www.w3.org/2000/svg"
+							height="2em"
+							viewBox="0 0 448 512"><path d={link.logo} /></svg
+						>
+					</a>
+				{/each}
+			</div>
 		</section>
 
 		<section id="homeContent">
 			<div id="mockWindowContainer">
 				<MockBrowserWindow>
 					<div id="navigationSection" slot="content">
-						<a href="/#/about"> About </a>
-						<a href="/#/resume"> Resume </a>
-						<a href="/#/blog"> Blog </a>
-						<a href="/#/portfolio"> Portfolio </a>
+						{#each links as link}
+							<a href={link.link}>{link.title}</a>
+						{/each}
 					</div>
 				</MockBrowserWindow>
 			</div>
@@ -70,6 +86,11 @@
 </body>
 
 <style>
+	.socialLink {
+		fill: var(--slate200);
+		margin: 1em 0.5em;
+	}
+
 	#title {
 		display: flex;
 		align-items: center;
@@ -88,12 +109,10 @@
 
 	#title > h1 {
 		font-size: 5vw;
-		/* font-size: 10vw; */
 	}
 
-	#title > h2 {
+	#subtitle > h2 {
 		font-size: 2vw;
-		/* font-size: 5vw; */
 	}
 
 	@media only screen and (max-width: 600px) {
@@ -101,7 +120,7 @@
 			font-size: 10vw;
 		}
 
-		#title > h2 {
+		#subtitle > h2 {
 			font-size: 5vw;
 		}
 

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { location } from 'svelte-spa-router';
-	import Home from './Home/Home.svelte';
+	import Home from './home/+page.svelte';
 	import NavBar from '$lib/navBar/NavBar.svelte';
-	import About from './About/About.svelte';
-	import Resume from './Resume/Resume.svelte';
-	import Blog from './Blog/Blog.svelte';
-	import Portfolio from './Portfolio/Portfolio.svelte';
+	import About from './about/+page.svelte';
+	import Resume from './resume/+page.svelte';
+	import Blog from './blog/+page.svelte';
+	import Portfolio from './portfolio/+page.svelte';
 	import { onMount } from 'svelte';
 
 	let home: HTMLDivElement;
