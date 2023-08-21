@@ -29,13 +29,13 @@
 		<NavBar />
 	{/if}
 
-	{#if $location == '/about'}
+	{#if $location == '/about' || $location == '/about/'}
 		<About />
-	{:else if $location == '/resume'}
+	{:else if $location == '/resume' || $location == '/resume/'}
 		<Resume />
-	{:else if $location == '/blog'}
+	{:else if $location == '/blog' || $location == '/blog/'}
 		<Blog />
-	{:else if $location == '/portfolio'}
+	{:else if $location == '/portfolio' || $location == '/portfolio/'}
 		<Portfolio />
 	{/if}
 </body>

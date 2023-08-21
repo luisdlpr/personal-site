@@ -2,7 +2,19 @@
 	import '$lib/global.css';
 	import resume from '$lib/resume.json';
 	import MockBrowserWindow from '$lib/mockBrowserWindow/MockBrowserWindow.svelte';
+	import { redirect } from '@sveltejs/kit';
+	import { onMount } from 'svelte';
+
+	let toHash: HTMLAnchorElement;
+
+	onMount(() => {
+		if (window.location.pathname == '/resume/') {
+			toHash.click();
+		}
+	});
 </script>
+
+<a style="display: none;" href="/#/resume" bind:this={toHash}>to resume hash</a>
 
 <header>
 	<h1 class="mainTitle">Resume/CV</h1>
