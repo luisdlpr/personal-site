@@ -1,0 +1,8 @@
+{
+	"links": [
+		{ "title": "About", "link": "/#/about" },
+		{ "title": "Resume", "link": "/#/resume" },
+		{ "title": "Blog", "link": "/#/blog" },
+		{ "title": "Portfolio", "link": "/#/portfolio" }
+	]
+}
