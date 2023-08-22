@@ -22,9 +22,16 @@
 		interests and software projects. I am extremely excited to get to work on producing some
 		personal projects, continue learning, and contributing to the space.
 	</p>
-	<div class="browserMargins" style="width: 50%;">
+	<div class="browserMargins" style="width: 50%">
 		<MockBrowserWindow>
-			<img slot="content" alt="Luis" src="/assets/photos/me.jpg" />
+			<img
+				id="meJPG"
+				slot="content"
+				alt="Luis"
+				src="/assets/photos/me.jpg"
+				width="828px"
+				height="1078px"
+			/>
 		</MockBrowserWindow>
 	</div>
 </section>
@@ -119,5 +126,11 @@
 
 	.browserMargins {
 		margin: 1em;
+	}
+
+	#meJPG {
+		object-fit: cover;
+		width: auto;
+		height: auto;
 	}
 </style>
