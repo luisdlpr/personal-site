@@ -17,9 +17,9 @@
 
 <section id="intro" style="flex-direction: column-reverse;">
 	<p>
-		My name is Luis and I am a recent graduate from UNSW Sydney. I graduated with a Dual Bachelors
-		of Mechanical Engineering and Computer Science. This website is a place for me to share my
-		interests and software projects. I am extremely excited to get to work on producing some
+		My name is Luis and I am a recent graduate from UNSW Sydney. I graduated with a Dual Bachelor
+		Degree in Mechanical Engineering and Computer Science. This website is a place for me to share
+		my interests and software projects. I am extremely excited to get to work on producing some
 		personal projects, continue learning, and contributing to the space.
 	</p>
 	<div class="browserMargins" style="width: 50%">
@@ -39,11 +39,11 @@
 <section id="keyboards">
 	<div>
 		<p>
-			One of my hobbies is Mechanical Keyboards. If I'm going to be typing all day might aswell make
-			it even more fun exploring the artistry of custom mechanical keyboards! Right now, I'm loving
-			the idea of compact keyboards and I'm primarily using the Idobao ID42 (40% staggered layout)
-			with MoonDrop LunaLight switches. It's very likely I might post some keyboard related stuff
-			here at some point! Some of other the keyboards I own are:
+			One of my hobbies is Mechanical Keyboards. If I'm going to be typing all day, might as well
+			make it even more fun exploring the artistry of custom mechanical keyboards! Right now, I'm
+			loving the idea of compact keyboards and I'm primarily using the Idobao ID42 (40% staggered
+			layout) with MoonDrop LunaLight switches. It's very likely I might post some keyboard related
+			stuff here at some point! Some of the other keyboards I own are:
 		</p>
 		<ul>
 			<li>Keychron K6</li>
@@ -81,10 +81,10 @@
 
 <section id="pets">
 	<p>
-		Lastly, I would like to introduce you to my coding buddies! My cats name is Ramen. He came from
-		a litter of unusual names (like Udon) but when we adopted him from the shelter we thought it was
-		perfect! My gecko's name is Gandalf, he is an Australian Barking Gecko and as the name suggests
-		he can be heard yelling from time to time.
+		Lastly, I would like to introduce you to my coding buddies! My cat's name is Ramen. He came from
+		a litter of unusual names (like Udon and Soba) but when we adopted him from the shelter we
+		thought it was perfect! My gecko's name is Gandalf. He is an Australian Barking Gecko and as the
+		name suggests he can be heard yelling from time to time.
 	</p>
 	<div class="browserMargins">
 		<MockBrowserWindow>
