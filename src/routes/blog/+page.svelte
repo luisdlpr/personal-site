@@ -22,6 +22,9 @@
 			<div class="blogPost" slot="content">
 				<h2><i>({post.date})</i> <strong>{post.title}</strong></h2>
 				<p>{post.post}</p>
+				{#if post.img}
+					<img src={post.img} alt={post.title} class="center" />
+				{/if}
 			</div>
 		</MockBrowserWindow>
 	</section>
@@ -48,5 +51,13 @@
 	.blogPostContainer {
 		animation: slideInUp;
 		animation-duration: 2s;
+		margin: 1em;
+	}
+
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 50%;
 	}
 </style>

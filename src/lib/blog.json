@@ -1,6 +1,17 @@
 {
 	"posts": [
 		{
+			"date": "26/08/2023",
+			"title": "Reel Riddle",
+			"post": "Began development on my next web app! This application will be a movie guessing game where given some details about a movie (plot, cast, year, genres etc) you guess the movie title. A single puzzle will be avaliable per day similar to games such as wordle. Hints like cast will be locked behind some sort of cooldown system or reduce the amount of points gained for solving the riddle. There will also be some sort of leaderboard mechanic showing the ladder of top players in the world and your score. I originally wanted the hints to be a few emoji's relating to the movie (kong vs godzilla would give the hint gorilla emoji, lizard emoji etc). Looking into emoji translation modules and doing some testing, attempts at auto generating these types of hints based on movie data were not good. Also looked into some machine learning or AI solutions but these seem overcomplicated or require payment etc and are not always 100% accurate. This could be done in the future, however decided that other hints could work better / be more fun. Will post updates with how it goes!"
+		},
+		{
+			"date": "25/08/2023",
+			"title": "New Keycaps! MT3 Operator from Drop",
+			"post": "Got some new keycaps! Love the legends with cause I can never remember the symbols for the number keys",
+			"img": "https://i.imgur.com/gnYOf1T.jpg"
+		},
+		{
 			"date": "21/08/2023",
 			"title": "First Post",
 			"post": "Welcome to my website! Check in soon to see more posts!"
