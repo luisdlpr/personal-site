@@ -1,6 +1,12 @@
 {
 	"posts": [
 		{
+			"date": "04/09/2023",
+			"title": "Wasting Time on Unix Ricing",
+			"post": "Some time last week, I made some upgrades to my PC and decided to order a SSD to try out using a linux OS. I have spent quite a bit of time configuring everything which took alot more effort than expected, but overall I'm happy with the product so far. I am interested to see if I will like it more than MacOS for development. I also spent some time configuring NeoVim from scratch as I have been using LunarVim (premade neovim config) and feel it has been worth it to learn how to configure my setup. Here's what my first rice looks like!",
+			"img": "https://i.imgur.com/EFcT6TA.png"
+		},
+		{
 			"date": "26/08/2023",
 			"title": "Reel Riddle (Part 2)",
 			"post": "Today I developed the basic API routes for play of the game and to automatically pull new movies from the TMDB API. Eventually I will set this endpoint to pull more than one page. Logic should be there to update the game for each new day but will need to test this tomorrow to be sure. I began work on the player UI also, and ran into some difficulties with the specifics/intricacies of nextjs in comparison to traditional react, but have managed to come up with something that works. I will look into how to optimize this later. I wanted to have a single character at a time sort of input which would also allow for a hint on how many letters/words the movie title has, but attempts to import components were difficult. I will try again to implement this using components next time I work on this (ran into difficulties with nextjs server vs client syntax on this), otherwise I will have to implement this from scratch."
