@@ -253,12 +253,12 @@
 	header {
 		display: flex;
 		align-items: center;
-		animation: fadeIn;
+		animation: slideInUp;
 		animation-duration: 2s;
 	}
 
 	body {
-		animation: zoomIn;
+		animation: slideInUp;
 		animation-duration: 2s;
 	}
 </style>
