@@ -114,6 +114,17 @@
 								</figure>
 							</MockBrowserWindow>
 						{/if}
+						{#if project.title === 'Reel-Riddle'}
+							<MockBrowserWindow>
+								<figure slot="content" class="projectScreenshots">
+									<img
+										width="90%"
+										src="https://i.imgur.com/hZD5Qze.png"
+										alt="Reel-Riddle Screenshot"
+									/>
+								</figure>
+							</MockBrowserWindow>
+						{/if}
 					</div>
 				{/each}
 			</section>
