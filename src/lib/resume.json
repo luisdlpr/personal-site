@@ -25,6 +25,7 @@
 		"React",
 		"Express",
 		"Svelte",
+		"Next.js",
 		"Flask",
 		"Docker",
 		"AWS",
@@ -95,6 +96,12 @@
 			"summary": "Browser Based Dungeon Crawler Game",
 			"tech": ["Java", "OOP/OOD"],
 			"description": "Developed with a team focusing on Object Oriented Design/Programming. Developement process with UML diagram and ER mapping can be found on the Github Repo"
+		},
+		{
+			"title": "Reel-Riddle",
+			"summary": "Puzzle Movie Guessing Game",
+			"tech": ["Next.js", "Prisma"],
+			"description": "A movie guessing game based on plot, year of release, and genres that resets daily with leaderboard functionality. Used the top 100 movies pulled from the TMDB API resetting every month using CRON. Find a link to the demo in the portfolio page of this website."
 		}
 	],
 	"ec": [
