@@ -8,6 +8,8 @@
 		if (window.location.pathname == '/about/') {
 			toHash.click();
 		}
+
+        document.body.scrollIntoView();
 	});
 </script>
 

@@ -10,6 +10,8 @@
 		if (window.location.pathname == '/resume/') {
 			toHash.click();
 		}
+
+        document.body.scrollIntoView();
 	});
 </script>
 

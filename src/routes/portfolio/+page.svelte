@@ -8,6 +8,8 @@
 		if (window.location.pathname == '/portfolio/') {
 			toHash.click();
 		}
+
+        document.body.scrollIntoView();
 	});
 </script>
 

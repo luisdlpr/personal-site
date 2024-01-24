@@ -9,6 +9,8 @@
 		if (window.location.pathname == '/blog/') {
 			toHash.click();
 		}
+
+        document.body.scrollIntoView();
 	});
 </script>
 
