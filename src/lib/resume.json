@@ -38,7 +38,7 @@
 		{
 			"title": "Bachelor of Engineering (Honours) (Mech)/Science (Computer Science)",
 			"provider": "UNSW",
-			"details": "AAA Scholarship, WAM: 80.94.",
+			"details": "First Class Honours, AAA Scholarship, WAM: 82.075.",
 			"year": "2023"
 		},
 		{
@@ -60,9 +60,16 @@
 			"provider": "IMS Stratus",
 			"details": [
 				"Maintaining and improving QHSE management tool using a hybrid stack (Express, Svelte, Template Toolkit, Perl, PostgreSQL).",
-				"Refactoring of legacy features in Modern Javascript frameworks (Svelte, React)."
+				"Refactoring of legacy features in Modern Javascript frameworks (Svelte, React).",
+				"Prompt Engineering of custom OpenAI Assistants to give clients personalised system insights based on their use data."
 			],
 			"year": "2023-Present"
+		},
+		{
+			"title": "Web Developer (Intern & Contract)",
+			"provider": "MOBLE Pty Ltd",
+			"details": ["Developed Web-scrapers using Playwright.js tp assist in data migration."],
+			"year": "2022-Present"
 		},
 		{
 			"title": "Software Developer Intern",

@@ -8,6 +8,8 @@
 		if (window.location.pathname == '/about/') {
 			toHash.click();
 		}
+
+        document.body.scrollIntoView();
 	});
 </script>
 
@@ -17,7 +19,7 @@
 
 <section id="intro" style="flex-direction: column-reverse;">
 	<p>
-		My name is Luis and I am a recent graduate from UNSW Sydney. I graduated with a Dual Bachelor
+		My name is Luis and I am a recent graduate from UNSW Sydney. I graduated with a Dual Bachelors
 		Degree in Mechanical Engineering and Computer Science. This website is a place for me to share
 		my interests and software projects. I am extremely excited to get to work on producing some
 		personal projects, continue learning, and contributing to the space.
@@ -39,18 +41,19 @@
 <section id="keyboards">
 	<div>
 		<p>
-			One of my hobbies is Mechanical Keyboards. If I'm going to be typing all day, might as well
-			make it even more fun exploring the artistry of custom mechanical keyboards! Right now, I'm
-			loving the idea of compact keyboards and I'm primarily using the Idobao ID42 (40% staggered
-			layout) with MoonDrop LunaLight switches. It's very likely I might post some keyboard related
-			stuff here at some point! Some of the other keyboards I own are:
+			One of my hobbies are Mechanical Keyboards. Its super exciting to set out on a day of 
+            programming/coding with a premium mechanical keyboard personally customised for my specific tastes!
+            Right now, I'm loving the idea of compact keyboards and I'm primarily using a 5 row crkbd choc (36 key 
+			layout). It's very likely I might post some keyboard related stuff here at some point! Some of the other keyboards I own/have owned in the past are:
 		</p>
 		<ul>
 			<li>Keychron K6</li>
 			<li>Keychron Q2</li>
 			<li>Tofu65</li>
 			<li>BM40 (Planck Clone)</li>
+			<li>Idobao ID42</li>
 			<li>HHKB Pro 2 Type-S</li>
+			<li>Monsgeek M3</li>
 		</ul>
 	</div>
 	<div class="browserMargins">
@@ -67,13 +70,13 @@
 	<p>
 		I like to try and keep my fitness up aswell! I have dabbled in amateur powerlifting and hope to
 		compete in some professional competitions some day. I also do a bit of bouldering casually, and
-		I hope to explore the hobby more now that I have finished uni.
+		I am exploring the hobby more now that I have finished uni.
 	</p>
 	<div class="browserMargins">
 		<MockBrowserWindow>
 			<div slot="content" style="display: flex; flex-direction: column; align-items: center;">
-				<img alt="Climbing" src="/assets/photos/climb.png" width="80%" />
 				<img alt="Powerlifting" src="/assets/photos/comp.jpg" width="80%" />
+				<img alt="Climbing" src="/assets/photos/climb.png" width="80%" />
 			</div>
 		</MockBrowserWindow>
 	</div>
@@ -82,7 +85,7 @@
 <section id="pets">
 	<p>
 		Lastly, I would like to introduce you to my coding buddies! My cat's name is Ramen. He came from
-		a litter of unusual names (like Udon and Soba) but when we adopted him from the shelter we
+		a litter of similarly named kittens (like Udon and Soba) and when we adopted him from the shelter we
 		thought it was perfect! My gecko's name is Gandalf. He is an Australian Barking Gecko and as the
 		name suggests he can be heard yelling from time to time.
 	</p>

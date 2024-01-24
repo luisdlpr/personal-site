@@ -10,6 +10,8 @@
 		if (window.location.pathname == '/resume/') {
 			toHash.click();
 		}
+
+        document.body.scrollIntoView();
 	});
 </script>
 
@@ -43,8 +45,8 @@
 
 			<section id="objective">
 				<p>
-					Final year Bachelor of Engineering (Mechanical) (Honours)/Science (Computer Science) dual
-					degree student seeking a Graduate Web Development or Software Engineering role.
+					Bachelor of Engineering (Mechanical) (Honours)/Science (Computer Science) dual
+					degree graduate seeking a Web Development or Software Engineering role.
 				</p>
 			</section>
 

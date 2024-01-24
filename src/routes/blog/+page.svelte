@@ -9,6 +9,8 @@
 		if (window.location.pathname == '/blog/') {
 			toHash.click();
 		}
+
+        document.body.scrollIntoView();
 	});
 </script>
 
@@ -16,6 +18,7 @@
 
 <h1>Dev Blog</h1>
 
+<main>
 {#each blog.posts as post}
 	<section class="blogPostContainer">
 		<MockBrowserWindow>
@@ -29,6 +32,7 @@
 		</MockBrowserWindow>
 	</section>
 {/each}
+</main>
 
 <style>
 	strong {
@@ -44,14 +48,17 @@
 		margin-top: 0.5em;
 	}
 
+    .blogPostContainer {
+        margin: 1em;
+    }
+
 	.blogPost {
 		margin: 1em;
 	}
 
-	.blogPostContainer {
+	main {
 		animation: slideInUp;
 		animation-duration: 2s;
-		margin: 1em;
 	}
 
 	.center {

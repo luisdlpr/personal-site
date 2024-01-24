@@ -18,6 +18,8 @@
 				home.style.display = 'none';
 			}
 		});
+
+        document.body.scrollIntoView();
 	});
 </script>
 
