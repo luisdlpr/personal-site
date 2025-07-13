@@ -80,12 +80,11 @@
 				"Used Terraform to adjust S3 lifecycle policies/inventory logging and applied changes using Atlantis."
 			],
 			"year": "2022-2023"
-		},{
+		},
+		{
 			"title": "Web Developer (Intern & Contract)",
 			"provider": "MOBLE Pty Ltd",
-			"details": [
-				"Developed Web-scrapers using Playwright.js tp assist in data migration."
-			],
+			"details": ["Developed Web-scrapers using Playwright.js tp assist in data migration."],
 			"year": "2022-Present"
 		},
 		{

@@ -121,7 +121,7 @@
 								<figure slot="content" class="projectScreenshots">
 									<img
 										width="90%"
-										src="https://i.imgur.com/hZD5Qze.png"
+										src="https://i.imgur.com/4DfO40r.png"
 										alt="Reel-Riddle Screenshot"
 									/>
 								</figure>

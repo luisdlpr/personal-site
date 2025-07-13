@@ -34,7 +34,7 @@
 					creating and using an account, and extra hints (cast, production company) with score
 					penalties.
 				</div>
-				<img src="https://i.imgur.com/hZD5Qze.png" alt="reel-riddle screenshots" width="90%" />
+				<img src="https://i.imgur.com/4DfO40r.png" alt="reel-riddle screenshots" width="90%" />
 			</div>
 		</MockBrowserWindow>
 	</section>
