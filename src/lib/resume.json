@@ -8,7 +8,7 @@
 		{
 			"logo": "M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z",
 			"subLink": "/in/luisvdlpreyes",
-			"fullLink": "https://www.linkedin.com/in/luisvldpreyes"
+			"fullLink": "https://www.linkedin.com/in/luisvdlpreyes"
 		},
 		{
 			"logo": "M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM218 271.7L64.2 172.4C66 156.4 79.5 144 96 144H352c16.5 0 30 12.4 31.8 28.4L230 271.7c-1.8 1.2-3.9 1.8-6 1.8s-4.2-.6-6-1.8zm29.4 26.9L384 210.4V336c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V210.4l136.6 88.2c7 4.5 15.1 6.9 23.4 6.9s16.4-2.4 23.4-6.9z",
@@ -16,109 +16,95 @@
 			"fullLink": "mailto:reyesluichi@hotmail.com"
 		}
 	],
-	"skills": [
-		"C",
-		"Python",
-		"Java",
-		"Perl",
-		"JavaScript",
-		"React",
-		"Express",
-		"Svelte",
-		"Next.js",
-		"Flask",
-		"Docker",
-		"AWS",
-		"TerraForm",
-		"SQL",
-		"Agile (Scrum, Jira)",
-		"Teamwork (Teams, Slack, Git)"
-	],
+	"skills": {
+		"languages": ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3", "Java", "Python", "Perl", "C", "SQL"],
+		"frameworks": ["React", "Svelte", "Next.js", "Express.js", "Flask", "Playwright", "Tailwind CSS", "Pola.rs", "Jest", "Redux"],
+		"tools": ["Docker", "Kubernetes", "Terraform", "Atlantis", "Databricks", "PostgreSQL", "MySQL"]
+	},
 	"education": [
 		{
-			"title": "Bachelor of Engineering (Honours) (Mech)/Science (Computer Science)",
-			"provider": "UNSW",
-			"details": "First Class Honours, AAA Scholarship, WAM: 82.075.",
+			"title": "Bachelor of Engineering (Hons)/Science (Computer Science)",
+			"provider": "University of New South Wales",
+			"details": "1st Class Honours, AAA Scholarship, 82 WAM",
 			"year": "2023"
+		},
+		{
+			"title": "Microsoft Certified - AI-900, AZ-900",
+			"provider": "Microsoft",
+			"details": "AI-900 Azure AI Fundamentals, AZ-900 Azure Fundamentals",
+			"year": "2025"
 		},
 		{
 			"title": "The Web Developer Bootcamp",
 			"provider": "Colt Steele",
 			"details": "HTML, JavaScript, CSS, noSQL (MongoDB).",
 			"year": "2022"
-		},
-		{
-			"title": "High School Certificate",
-			"provider": "St John Paul II Catholic College",
-			"details": "ATAR: 93.6, HSC High Achievers Award, Gold Academic Award, 2x Silver Academic Award.",
-			"year": "2017"
 		}
 	],
 	"experiences": [
 		{
-			"title": "Full Stack Developer",
-			"provider": "IMS Stratus",
+			"title": "Graduate Trainee - Network Automation Engineer",
+			"provider": "UBS",
 			"details": [
-				"Maintaining and improving QHSE management tool using a hybrid stack (Express, Svelte, Template Toolkit, Perl, PostgreSQL).",
-				"Refactoring of legacy features in Modern Javascript frameworks (Svelte, React).",
-				"Prompt Engineering of custom OpenAI Assistants to give clients personalised system insights based on their use data."
+				"Rebuilt Web UI for internal network automation tool using a mix of Vanilla JS & React for better developer usability across teams. Developed a CI/CD pipeline for automated testing & deployment of the application to test and production environments.",
+				"Developed an interactive, 3D global network map with Mapbox & Three.js for real-time infrastructure visibility.",
+				"Implemented high-speed search indexing/caching solution for network data of 12M+ devices using pola.rs, improving search speed 120x.",
+				"Built dynamic, modular, reusable UI components (React) for use in highly customisable, panel based workspace platforms.",
+				"Integrated AI tools (Copilot, Cursor) into personal workflows to improve productivity."
 			],
-			"year": "2023-Present"
+			"year": "Feb. 2024 – Present"
 		},
 		{
-			"title": "Web Developer (Intern & Contract)",
-			"provider": "MOBLE Pty Ltd",
-			"details": ["Developed Web-scrapers using Playwright.js tp assist in data migration."],
-			"year": "2022-Present"
+			"title": "Web Developer",
+			"provider": "IMS Stratus",
+			"details": [
+				"Maintenance & improvement of existing systems in Perl, PSQL, & Template Toolkit. Development of new features in modern JavaScript frameworks (Svelte, React, Express)",
+				"Process management & deployment of non-containerised microservices to Linux based servers."
+			],
+			"year": "Feb 2023 - Feb 2024"
 		},
 		{
 			"title": "Software Developer Intern",
 			"provider": "Akuna Capital",
 			"details": [
-				"Worked in the Data Engineering team to optimise AWS S3 usage. Identified over $4000 in potential savings.",
-				"Developed scanning tool design for big data (10+ billion rows) deployable through Docker and Databricks.",
-				"Used Terraform to adjust S3 lifecycle policies/inventory logging and applied changes using Atlantis."
+				"Developed scalable scripts scanning 10B+ rows of AWS S3; achieved ~$4K monthly savings. Automated S3 lifecycle + policy changes via Terraform & Atlantis."
 			],
-			"year": "2022-2023"
-		},
-		{
-			"title": "Web Developer (Intern & Contract)",
-			"provider": "MOBLE Pty Ltd",
-			"details": ["Developed Web-scrapers using Playwright.js tp assist in data migration."],
-			"year": "2022-Present"
-		},
-		{
-			"title": "Mechanical Engineering Vacation Student",
-			"provider": "Aeris Resources, Tritton Ops",
-			"details": [
-				"Produced engineering drawings (CAD) for 21 seperate projects and revised based on feedback from clients.",
-				"Led planning, procurement, and installation of a compressed air drying unit for underground mine air."
-			],
-			"year": "2020-2021"
+			"year": "Nov 2022 - Feb 2023"
 		}
 	],
 	"projects": [
 		{
-			"title": "BingusEats",
-			"summary": "Full Stack Wait Management System",
-			"tech": ["React", "Express", "PostgreSQL"],
-			"description": "(Private Repository, please request access) Full Stack Wait Management System using a PERN stack in a team for a university capstone project. Functions similarly to Me&U with some novel functionalities such as menu versioning and a recommendation algorithm based on weather and food tags"
+			"title": "FinSight (UBS 2025 Hackathon)",
+			"summary": "Regulatory radar leveraging web scraping of key regulatory sources and LLMs for risk analysis.",
+			"tech": ["Python", "Flask", "React", "OpenAI"],
+			"description": "Regulatory radar leveraging web scraping of key regulatory sources and LLMs for risk analysis.",
+			"year": "July 2025"
 		},
 		{
-			"title": "DungeonSlayer",
-			"summary": "Browser Based Dungeon Crawler Game",
-			"tech": ["Java", "OOP/OOD"],
-			"description": "Developed with a team focusing on Object Oriented Design/Programming. Developement process with UML diagram and ER mapping can be found on the Github Repo"
+			"title": "Accessify (UBS 2024 Hackathon)",
+			"summary": "NLP-driven communication assistant aligning to internal Tone of Voice guidelines (think Grammarly).",
+			"tech": ["Python", "Express.js", "React", "OpenAI"],
+			"description": "NLP-driven communication assistant aligning to internal Tone of Voice guidelines (think Grammarly).",
+			"year": "Sep 2024"
 		},
 		{
 			"title": "Reel-Riddle",
-			"summary": "Puzzle Movie Guessing Game",
-			"tech": ["Next.js", "Prisma"],
-			"description": "A movie guessing game based on plot, year of release, and genres that resets daily with leaderboard functionality. Used the top 100 movies pulled from the TMDB API resetting every month using CRON. Find a link to the demo in the portfolio page of this website."
+			"summary": "Daily movie quiz game built with React, TMDB API, CRON refresh, and real-time leaderboard. (think Wordle).",
+			"tech": ["Next.js", "TypeScript", "React", "PrismaDB"],
+			"description": "Daily movie quiz game built with React, TMDB API, CRON refresh, and real-time leaderboard. (think Wordle)."
+		},
+		{
+			"title": "BingusEats",
+			"summary": "Full-Stack wait management system with menu versioning and order recommendation engine.",
+			"tech": ["Node.js", "Express.js", "React", "PostgreSQL"],
+			"description": "Full-Stack wait management system with menu versioning and order recommendation engine."
 		}
 	],
-	"ec": [
-		"Active Guitarist in High School Music events including Creative Arts Nights, Open Days, School Lunchtime Concerts, and 2014 and 2016 School Musicals (Apollo 14, Back to the 80s). Band A leader in 2016 Musical.",
-		"1st Place (u74 kg Jr Division) in Hercules of The Hills 11 Powerlifting Competition and amateur coach (3 clients)."
-	]
+	"leadership": [
+		"ANZ Location Lead, UBS GTPNet (Graduate Networking Committee)",
+		"Junior Talent Representative, UBS Innovation Guild",
+		"Junior Talent Panelist, UBS WiT Girls in Business",
+		"1st place APAC & 3rd place globally, UBS Global Coding Challenge 2025"
+	],
+	"summary": "Software Engineer specializing in Full-Stack Web Development, with strong frontend experience using both Vanilla JS modern frameworks. Focused on building intuitive, high-performance interfaces that deliver user value."
 }
